@@ -4,14 +4,10 @@ def index
   @entry = Entry.all
 end
 
-def show
-    @entry = Entry.find(params[:id])
-    # render entries/show view with details about the entry
-  end
 
 def new
     # instantiate a new Entry for the form
-    @entry = Entry.new
+    @place_id = params["place_id"]
   end
 
 def create
@@ -24,13 +20,9 @@ def create
     redirect_to "/places/" + params["place_id"]
   end
 
-  private
 
-  def entry_params
-    params.require(:entry).permit(:name)
-  end
+
 end
-
 
 
 
