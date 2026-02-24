@@ -6,6 +6,7 @@ def index
 end
 def show
     @place = Place.find(params[:id])
+    @entries = @place.entries
     # render places/show view with details about the place
   end
 

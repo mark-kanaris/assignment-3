@@ -5,10 +5,24 @@
   <%= @place.name %>
 </p>
 
-<p>
-  <strong>ID:</strong>
-  <%= @place.id %>
-</p>
+<h2>Entries</h2>
+<% if @entries.any? %>
+  <ul>
+    <% @entries.each do |entry| %>
+      <li>
+        <strong><%= entry.title %></strong>
+        <% if entry.occurred_on %>
+          (<%= entry.occurred_on %>)
+        <% end %>
+        <% if entry.description %>
+          <p><%= entry.description %></p>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No entries for this place yet.</p>
+<% end %>
 
 <a href="/entries/new"><button>Create New Entry</button></a>
 
