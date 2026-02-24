@@ -1,10 +1,12 @@
 <h1>My Places</h1>
  
 <ul>
-  <% for place in @places %>
+  <% @places.each do |place| %>
     <li>
-      <%= place["name"] %>
-      <a href="/places/<%=place["id"]%>">Details Page</a>
+      <%= place.name %>
+      <%= link_to "Details", place_path(place) %>
     </li>
   <% end %>
 </ul>
+
+<%= link_to "Create New Place", new_place_path, class: "button" %>

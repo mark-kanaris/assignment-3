@@ -1,0 +1,9 @@
+<h1>Create a New Place</h1>
+
+<%= form_with model: @place, local: true do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name, required: true %>
+  </p>
+  <%= f.submit "Create Place" %>
+<% end %>

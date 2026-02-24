@@ -1,6 +1,31 @@
 class PlacesController < ApplicationController
 
+  # NOTE: use `@place` not `@places` or `@post` in the actions below
 def index
   @places = Place.all
 end
+def show
+    @place = Place.find(params[:id])
+    # render places/show view with details about the place
+  end
+
+def new
+    # instantiate a new Place for the form
+    @place = Place.new
+  end
+
+def create
+    @place = Place.new(place_params)
+    if @place.save
+      redirect_to places_path, notice: "Place was successfully created."
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def place_params
+    params.require(:place).permit(:name)
+  end
 end
