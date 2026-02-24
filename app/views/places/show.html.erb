@@ -6,24 +6,9 @@
 </p>
 
 <h2>Entries</h2>
-<% if @entries.any? %>
-  <ul>
-    <% @entries.each do |entry| %>
-      <li>
-        <strong><%= entry.title %></strong>
-        <% if entry.occurred_on %>
-          (<%= entry.occurred_on %>)
-        <% end %>
-        <% if entry.description %>
-          <p><%= entry.description %></p>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No entries for this place yet.</p>
-<% end %>
+<ul>  
 
-<a href="/entries/new"><button>Create New Entry</button></a>
-
+<p>
+  <a href= "/entries/new?place_id=<%= @place["id"] %>">New Entry</a>
+</p>
 <p><%= link_to "Back to Places", places_path %></p>

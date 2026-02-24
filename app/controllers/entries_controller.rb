@@ -15,12 +15,13 @@ def new
   end
 
 def create
-    @entry = Entry.new(entry_params)
-    if @entry.save
-      redirect_to entries_path, notice: "Entry was successfully created."
-    else
-      render :new
-    end
+    entry = Entry.new
+    entry["place_id"] = params["place_id"]
+    entry["title"] = params["title"]
+    entry["description"] = params["description"]
+    entry["occurred_on"] = params["occurred_on"]
+    entry.save
+    redirect_to "/places/" + params["place_id"]
   end
 
   private

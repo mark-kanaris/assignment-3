@@ -16,12 +16,10 @@ def new
   end
 
 def create
-    @place = Place.new(place_params)
-    if @place.save
-      redirect_to places_path, notice: "Place was successfully created."
-    else
-      render :new
-    end
+    place = Place.new
+    place["name"] = params["name"]
+    place.save
+    redirect_to "/places"
   end
 
   private
